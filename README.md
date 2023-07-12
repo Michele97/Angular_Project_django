@@ -1,6 +1,6 @@
 # FrontEnd
 
-Nuovo progetto : Parte Angular . 
+Nuovo progetto : Parte Angular 
 
 Versione Angular: 16.1.3
 
