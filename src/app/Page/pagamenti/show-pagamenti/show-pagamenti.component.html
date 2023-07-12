@@ -1,0 +1,83 @@
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary float-right m-2"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  (click)="addClick()"
+  data-backdrop="static"
+  data
+  keyboard="false"
+>
+  Aggiungi Pagamento
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          {{ ModalTitle }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeClick()"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <app-add-pagamenti
+          [pag]="pag"
+          *ngIf="ActivateAddPagaComp"
+        ></app-add-pagamenti>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Importo</th>
+      <th>Data Pagamento</th>
+      <th>Contratto</th>
+      <th>Opzioni</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of PagamentoList">
+      <td>{{ dataItem.id_Pagamento}}</td>
+      <td>{{ dataItem.importo}}</td>
+      <td>{{ dataItem.dataPaga}}</td>
+      <td>{{ dataItem.id_Contratto }}</td>
+      <td>
+        <button type="button" class="btn btn-light mr-1"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        (click)="editClick(dataItem)"
+        data-backdrop="static"
+        data
+        keyboard="false"
+        >
+        Edita
+      </button>
+        <button type="button" class="btn btn-light mr-1" (click)="deleteClick(dataItem)">Cancella</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

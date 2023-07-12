@@ -1,0 +1,91 @@
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary float-right m-2"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  (click)="addClick()"
+  data-backdrop="static"
+  data
+  keyboard="false"
+>
+  Aggiungi Cliente/Azienda
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          {{ ModalTitle }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeClick()"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <app-add-clienti
+          [cli]="cli"
+          *ngIf="ActivateAddClientiComp"
+        ></app-add-clienti>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Codice Fiscale</th>
+      <th>Regione</th>
+      <th>P.IVA</th>
+      <th>Azienda</th>
+      <th>Opzioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of ClienteList">
+      <td>{{ dataItem.clienteId }}</td>
+      <td>{{ dataItem.clienteName }}</td>
+      <td>{{ dataItem.clienteCognome }}</td>
+      <td>{{ dataItem.clienteCodF }}</td>
+      <td>{{ dataItem.clienteregione }}</td>
+      <td>{{ dataItem.clientepiva }}</td>
+      <td>{{ dataItem.aziendaFlag }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-light mr-1"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          (click)="editClick(dataItem)"
+          data-backdrop="static"
+          data
+          keyboard="false"
+        >
+          Modifica
+        </button>
+
+        <button type="button" class="btn btn-light mr-1" (click)="deleteClick(dataItem)">Cancella</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

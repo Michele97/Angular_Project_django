@@ -1,0 +1,82 @@
+
+<div class="form-group column">
+
+  <label class="col-sm-2 col-form-label">Azienda</label>
+  <div class="col-sm-10">
+    <input type="checkbox" [(ngModel)]="aziendaFlag"/>
+  </div>
+
+  <div>
+  <label class="col-sm-2 col-form-label">Nome</label>
+  <div class="col-sm-10">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="clienteName"
+      placeholder="Inserisci Nome Cliente/Azienda"
+    />
+  </div>
+</div>
+<div *ngIf="aziendaFlag===false">
+  <label class="col-sm-2 col-form-label">Cognome</label>
+  <div class="col-sm-10">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="clienteCognome"
+      placeholder="Inserisci Cognome Cliente"
+    />
+  </div>
+</div>
+<div *ngIf="aziendaFlag===false">
+  <label class="col-sm-5 col-form-label">Codice Fiscale</label>
+  <div class="col-sm-10">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="clienteCodF"
+      placeholder="Inserisci Codice Fiscale"
+      maxlength="16"
+    />
+  </div>
+</div>
+<div *ngIf="aziendaFlag===true">
+  <label class="col-sm-2 col-form-label">Regione</label>
+  <div class="col-sm-10">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="clienteRegione"
+      placeholder="Inserisci Regione Cliente"
+    />
+  </div>
+</div>
+<div *ngIf="aziendaFlag===true">
+  <label class="col-sm-2 col-form-label">Partita IVA</label>
+  <div class="col-sm-10">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="clientepiva"
+      placeholder="Inserisci Partita IVA"
+      maxlength="11"
+    />
+  </div>
+</div>
+  <div class="col-sm-10 mt-3">
+    <button
+      (click)="addClick()"
+      class="btn btn-primary"
+      *ngIf="cli.clienteId == 0"
+    >
+      Aggiungi
+    </button>
+    <button
+      (click)="updateCliente()"
+      class="btn btn-primary"
+      *ngIf="cli.clienteId != 0"
+    >
+      Modifica
+    </button>
+  </div>
+</div>

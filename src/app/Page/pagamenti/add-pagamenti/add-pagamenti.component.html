@@ -1,0 +1,52 @@
+
+<div class="form-group column">
+
+  <div>
+  <label class="col-sm-2 col-form-label">Importo</label>
+  <div class="col-sm-10">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="importo"
+    />
+  </div>
+</div>
+<div >
+  <label class="col-sm-5 col-form-label">Data Pagamento</label>
+  <div class="col-sm-10">
+    <input
+      type="date"
+      class="form-control"
+      [(ngModel)]="dataPaga"
+    />
+    <!-- Creare un menu' a tendina con tutti gli id:Nome dei clienti -->
+  </div>
+</div>
+<div>
+  <label class="col-sm-5 col-form-label">Numero Contratto</label>
+  <div class="col-sm-10">
+    <select class="form-control" [(ngModel)]="id_Contratto">
+      <option value="cliente">---------</option>
+      <option *ngFor="let data of ContrattoList" value={{data.id_contratto}}>{{data.id_contratto}}</option>
+    </select>
+
+  </div>
+</div>
+
+</div>
+  <div class="col-sm-10 mt-3">
+    <button
+      (click)="addClick()"
+      class="btn btn-primary"
+      *ngIf="pag.id_Pagamento==0"
+    >
+      Aggiungi
+    </button>
+    <button
+      (click)="updateClick()"
+      class="btn btn-primary"
+      *ngIf="pag.id_Pagamento!=0"
+    >
+      Modifica
+    </button>
+  </div>

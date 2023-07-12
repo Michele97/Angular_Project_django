@@ -1,0 +1,63 @@
+
+<div class="form-group column">
+
+  <div>
+  <label class="col-sm-2 col-form-label">Importo</label>
+  <div class="col-sm-10">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="contattoimporto"
+    />
+  </div>
+</div>
+<div >
+  <label class="col-sm-2 col-form-label">Cliente</label>
+  <div class="col-sm-10">
+    <select class="form-control" [(ngModel)]="cliente">
+      <option value="cliente">---------</option>
+      <option *ngFor="let data of ClienteList" value={{data.clienteId}}>{{data.clienteId}} : {{data.clienteName}}</option>
+    </select>
+  </div>
+</div>
+<div>
+  <label class="col-sm-5 col-form-label">Data</label>
+  <div class="col-sm-10">
+    <input
+      type="date"
+      class="form-control"
+      [(ngModel)]="data"
+      format="yyyy/MM/gg"
+    />
+  </div>
+</div>
+<div>
+  <label class="col-sm-2 col-form-label">Scadenza</label>
+  <div class="col-sm-10">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="scadenza"
+
+      placeholder="Inserisci scadenza YYYY-MM-DD"
+    />
+  </div>
+</div>
+</div>
+  <div class="col-sm-10 mt-3">
+    <button
+      (click)="addClick()"
+      class="btn btn-primary"
+      *ngIf="cont.id_contratto == 0"
+    >
+      Aggiungi
+    </button>
+    <button
+      (click)="updateClick()"
+      class="btn btn-primary"
+      *ngIf="cont.id_contratto != 0"
+    >
+      Modifica
+    </button>
+  </div>
+
